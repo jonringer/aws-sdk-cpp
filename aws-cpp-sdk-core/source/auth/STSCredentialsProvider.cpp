@@ -145,16 +145,21 @@ void STSAssumeRoleWebIdentityCredentialsProvider::Reload()
     m_credentials = result.creds;
 }
 
+bool STSAssumeRoleWebIdentityCredentialsProvider::ExpiresSoon() const
+{
+  return ((m_credentials.GetExpiration() - Aws::Utils::DateTime::Now()).count() < EXPIRATION_GRACE_PERIOD);
+}
+
 void STSAssumeRoleWebIdentityCredentialsProvider::RefreshIfExpired()
 {
     ReaderLockGuard guard(m_reloadLock);
-    if (!m_credentials.IsExpiredOrEmpty())
+    if (!m_credentials.IsEmpty() && !ExpiresSoon())
     {
        return;
     }
 
     guard.UpgradeToWriterLock();
-    if (!m_credentials.IsExpiredOrEmpty()) // double-checked lock to avoid refreshing twice
+    if (!m_credentials.IsExpiredOrEmpty() && !ExpiresSoon()) // double-checked lock to avoid refreshing twice
     {
         return;
     }
