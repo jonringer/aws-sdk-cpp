@@ -7,6 +7,7 @@ import stat
 import subprocess
 import platform
 import random
+import string
 
 def ParseArguments():
     argMap = {}
@@ -29,7 +30,7 @@ def Main():
     testHasParentDir = platform.system() != "Windows"
     exeExtension = ".exe" if platform.system() == "Windows" else ""
 
-    testList = [ "aws-cpp-sdk-transcribestreaming-integration-tests",
+    testList = [ #"aws-cpp-sdk-transcribestreaming-integration-tests", # Temporarily disabled while investigated
                  "aws-cpp-sdk-dynamodb-integration-tests",
                  "aws-cpp-sdk-sqs-integration-tests",
                  "aws-cpp-sdk-s3-integration-tests",
@@ -39,7 +40,7 @@ def Main():
                  "aws-cpp-sdk-cognitoidentity-integration-tests",
                  "aws-cpp-sdk-transfer-tests",
                  "aws-cpp-sdk-s3-encryption-integration-tests",
-                 "aws-cpp-sdk-mediastore-data-integration-tests",
+                 #"aws-cpp-sdk-mediastore-data-integration-tests", # Temporarily disabled while investigated
                  "aws-cpp-sdk-kinesis-integration-tests",
                  "aws-cpp-sdk-logs-integration-tests",
                  "aws-cpp-sdk-elasticfilesystem-integration-tests",
@@ -56,7 +57,7 @@ def Main():
         if not os.path.isfile(test_exe):
             print("Test: \"{}\" doesn't exist, skipped.".format(test_exe))
             continue
-        prefix = "--aws_resource_prefix=" + platform.system().lower()
+        prefix = "--aws_resource_prefix=" + ''.join(random.choice(string.ascii_lowercase + string.digits) for _ in range(8))
         print("testExe = " + test_exe)
         print("prefix = " + prefix)
         AddExecutableBit(test_exe)

@@ -193,42 +193,50 @@ namespace Model
 
 
     /**
-     * <p>The Amazon Resource Name of the resource associated with the usage limit.</p>
+     * <p>The Amazon Resource Name (ARN) of the resource associated with the usage
+     * limit.</p>
      */
     inline const Aws::String& GetUsageLimitArn() const{ return m_usageLimitArn; }
 
     /**
-     * <p>The Amazon Resource Name of the resource associated with the usage limit.</p>
+     * <p>The Amazon Resource Name (ARN) of the resource associated with the usage
+     * limit.</p>
      */
     inline bool UsageLimitArnHasBeenSet() const { return m_usageLimitArnHasBeenSet; }
 
     /**
-     * <p>The Amazon Resource Name of the resource associated with the usage limit.</p>
+     * <p>The Amazon Resource Name (ARN) of the resource associated with the usage
+     * limit.</p>
      */
     inline void SetUsageLimitArn(const Aws::String& value) { m_usageLimitArnHasBeenSet = true; m_usageLimitArn = value; }
 
     /**
-     * <p>The Amazon Resource Name of the resource associated with the usage limit.</p>
+     * <p>The Amazon Resource Name (ARN) of the resource associated with the usage
+     * limit.</p>
      */
     inline void SetUsageLimitArn(Aws::String&& value) { m_usageLimitArnHasBeenSet = true; m_usageLimitArn = std::move(value); }
 
     /**
-     * <p>The Amazon Resource Name of the resource associated with the usage limit.</p>
+     * <p>The Amazon Resource Name (ARN) of the resource associated with the usage
+     * limit.</p>
      */
     inline void SetUsageLimitArn(const char* value) { m_usageLimitArnHasBeenSet = true; m_usageLimitArn.assign(value); }
 
     /**
-     * <p>The Amazon Resource Name of the resource associated with the usage limit.</p>
+     * <p>The Amazon Resource Name (ARN) of the resource associated with the usage
+     * limit.</p>
      */
     inline UsageLimit& WithUsageLimitArn(const Aws::String& value) { SetUsageLimitArn(value); return *this;}
 
     /**
-     * <p>The Amazon Resource Name of the resource associated with the usage limit.</p>
+     * <p>The Amazon Resource Name (ARN) of the resource associated with the usage
+     * limit.</p>
      */
     inline UsageLimit& WithUsageLimitArn(Aws::String&& value) { SetUsageLimitArn(std::move(value)); return *this;}
 
     /**
-     * <p>The Amazon Resource Name of the resource associated with the usage limit.</p>
+     * <p>The Amazon Resource Name (ARN) of the resource associated with the usage
+     * limit.</p>
      */
     inline UsageLimit& WithUsageLimitArn(const char* value) { SetUsageLimitArn(value); return *this;}
 
