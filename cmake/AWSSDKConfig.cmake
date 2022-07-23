@@ -84,6 +84,7 @@ if (AWSSDK_ROOT_DIR)
             )
 else()
     find_file(AWSSDK_CORE_HEADER_FILE Aws.h
+        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/aws/core>
         "${AWSSDK_DEFAULT_ROOT_DIR}/${AWSSDK_INSTALL_INCLUDEDIR}/aws/core"
         "/usr/${AWSSDK_INSTALL_INCLUDEDIR}/aws/core"
         "/usr/local/${AWSSDK_INSTALL_INCLUDEDIR}/aws/core"
